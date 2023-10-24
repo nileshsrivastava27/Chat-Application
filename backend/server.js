@@ -1,11 +1,13 @@
 const express = require('express');
 const {chats} = require("./data/data.js")
 const dotenv = require("dotenv");
-const PORT = process.env.PORT || 8000;
+const connectDB = require('./Config/db.js');
+const PORT = process.env.PORT || 9000;
 
-const app = express();
+
 dotenv.config();
-
+const app = express();
+connectDB();
 
 app.get("/", (req, res)=>{
     res.send("Hello from API..");
