@@ -78,7 +78,6 @@ const authUser = expressAsyncHandler(async (req, res) => {
         token: generateToken(user._id),
       });
     } else {
-
         res.json({"msg" : "Invaild Email and Password"});
     }
   });

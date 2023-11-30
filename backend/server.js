@@ -5,6 +5,7 @@ dotenv.config({path : '/Users/nileshs2002/Desktop/CODE/ChatApp/backend/.env'});
 const connectDB = require('./Config/db.js');
 const PORT = process.env.PORT || 8000;
 const userRoutes = require('./Routes/userRoutes.js');
+const {errorHandler, notFound} = require('./Middlewares/errorMiddleware.js')
 
 connectDB();
 const app = express();
@@ -26,6 +27,9 @@ app.get("/api/chat/:id", (req,res)=>{
 })
 
 app.use("/api/user", userRoutes)
+
+app.use(notFound)
+app.use(errorHandler)
 
 
 app.listen(6500, console.log(`Server started on port ${PORT}`));
